@@ -46,7 +46,7 @@ $(".closeNav").click(function () {
     $(".navbtn").removeClass("fa-x");
     $(".navbtn").addClass("fa-list");
     $(".links-list").hide(1000);
-  } 
+  }
 });
 
 // get Api
@@ -63,7 +63,7 @@ async function getApi(s) {
   if (http.status === 200 && http.ok) {
     let meal = await http.json();
     let meals = meal.meals;
-    defaultMeals = meals
+    defaultMeals = meals;
     // console.log(meals);
     displayMeals(defaultMeals);
   }
@@ -102,7 +102,6 @@ $("#searchbtn").click(function () {
 });
 
 $(".logo").click(() => displayMeals(defaultMeals));
-
 
 $("#ByLtr").keydown(function () {
   $("#ByLtr").attr("maxlength", "1");
@@ -170,14 +169,12 @@ $("#categories").click(function () {
 
 async function displayCategories() {
   let http = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`);
-    let response ;
-    let categories ;
+  let response;
+  let categories;
   if (http.ok && http.status == 200) {
-      response = await http.json();
-      categories = response.categories;
+    response = await http.json();
+    categories = response.categories;
   }
-
-
 
   console.log(categories);
   let cats = ``;
@@ -261,15 +258,11 @@ async function displayByIngredients() {
   if (http.ok && http.status == 200) {
     response = await http.json();
     ingredients = response.meals.slice(0, 30);
-  }
+    console.log(ingredients);
+    let ing = ``;
 
-  
-
-  console.log(ingredients);
-  let ing = ``;
-
-  for (let ingredient of ingredients) {
-    ing += `
+    for (let ingredient of ingredients) {
+      ing += `
     <div class="col-md-3 text-white ">
       <div onclick="getIngredientMeals('${ingredient.strIngredient}')" class="rounded-2 text-center ingredient-card">
               <i class="fa-solid fa-utensils fa-4x"></i>
@@ -277,12 +270,13 @@ async function displayByIngredients() {
       </div>
     </div>
     `;
-  }
-  $("#meals").html(`<div class="container">
+    }
+    $("#meals").html(`<div class="container">
   <div id="#mealsRow" class="row row-cols-lg-4 row-cols-md-3">
     ${ing}
   </div>
 </div>`);
+  }
 }
 
 async function getIngredientMeals(area) {
