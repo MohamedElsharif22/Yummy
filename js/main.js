@@ -1,6 +1,8 @@
 let searchInputLtr = document.getElementById("ByLtr");
 let searchInputName = document.getElementById("ByName");
 let submitBtn = document.getElementById("submitBtn");
+let navWidth = $(".side-nav-menu").outerWidth();
+let navHeadWidth = $(".nav-header").outerWidth();
 let defaultMeals;
 // document ready
 $(function () {
@@ -12,8 +14,8 @@ $(function () {
 });
 
 // handle nav
-let navWidth = $(".side-nav-menu").outerWidth();
-let navHeadWidth = $(".nav-header").outerWidth();
+navWidth = $(".side-nav-menu").outerWidth();
+navHeadWidth = $(".nav-header").outerWidth();
 let sideNav = document.getElementById("sideNave");
 
 $(".side-nav-menu").animate({ left: `-${navWidth - navHeadWidth}` }, 500);
@@ -39,8 +41,8 @@ $(".toggleNav").click(function () {
 });
 
 $(".closeNav").click(function () {
-  let navWidth = $(".side-nav-menu").outerWidth();
-  let navHeadWidth = $(".nav-header").outerWidth();
+  navWidth = $(".side-nav-menu").outerWidth();
+  navHeadWidth = $(".nav-header").outerWidth();
   if ($(".side-nav-menu").css("left") == "0px") {
     $(".side-nav-menu").animate({ left: `-${navWidth - navHeadWidth}` }, 1000);
     $(".navbtn").removeClass("fa-x");
@@ -262,7 +264,7 @@ async function displayByIngredients() {
     let ing = ``;
 
     for (let ingredient of ingredients) {
-    ing += `
+      ing += `
     <div class="col-md-3 text-white ">
       <div onclick="getIngredientMeals('${ingredient.strIngredient}')" class="rounded-2 text-center ingredient-card">
               <i class="fa-solid fa-utensils fa-4x"></i>
