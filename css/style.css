@@ -2,7 +2,7 @@
   width: 3rem;
 }
 
-li , i ,.card,.ingredient, .logo
+li , i ,.card,.ingredient-card, .logo
 {
   cursor: pointer;
 }

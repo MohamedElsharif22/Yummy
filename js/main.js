@@ -170,8 +170,14 @@ $("#categories").click(function () {
 
 async function displayCategories() {
   let http = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`);
-  let response = await http.json();
-  let categories = response.categories;
+    let response ;
+    let categories ;
+  if (http.ok && http.status == 200) {
+      response = await http.json();
+      categories = response.categories;
+  }
+
+
 
   console.log(categories);
   let cats = ``;
@@ -249,9 +255,15 @@ $("#ingredients").click(function () {
 });
 
 async function displayByIngredients() {
-  let http = await fetch(`https:/www.themealdb.com/api/json/v1/1/list.php?i=list`);
-  let response = await http.json();
-  let ingredients = response.meals.slice(0, 30);
+  let http = await fetch("https:/www.themealdb.com/api/json/v1/1/list.php?i=list");
+  let response;
+  let ingredients;
+  if (http.ok && http.status == 200) {
+    response = await http.json();
+    ingredients = response.meals.slice(0, 30);
+  }
+
+  
 
   console.log(ingredients);
   let ing = ``;
@@ -259,7 +271,7 @@ async function displayByIngredients() {
   for (let ingredient of ingredients) {
     ing += `
     <div class="col-md-3 text-white ">
-      <div onclick="getIngredientMeals('${ingredient.strIngredient}')" class="rounded-2 text-center ingredient">
+      <div onclick="getIngredientMeals('${ingredient.strIngredient}')" class="rounded-2 text-center ingredient-card">
               <i class="fa-solid fa-utensils fa-4x"></i>
               <h3>${ingredient.strIngredient}</h3>
       </div>
