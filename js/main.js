@@ -252,7 +252,7 @@ $("#ingredients").click(function () {
 });
 
 async function displayByIngredients() {
-  let http = await fetch("https:/www.themealdb.com/api/json/v1/1/list.php?i=list");
+  let http = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?i=list");
   let response;
   let ingredients;
   if (http.ok && http.status == 200) {
@@ -262,7 +262,7 @@ async function displayByIngredients() {
     let ing = ``;
 
     for (let ingredient of ingredients) {
-      ing += `
+    ing += `
     <div class="col-md-3 text-white ">
       <div onclick="getIngredientMeals('${ingredient.strIngredient}')" class="rounded-2 text-center ingredient-card">
               <i class="fa-solid fa-utensils fa-4x"></i>
