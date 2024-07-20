@@ -2,7 +2,7 @@
   width: 3rem;
 }
 
-li , i ,.card
+li , i ,.card,.ingredient, .logo
 {
   cursor: pointer;
 }
@@ -156,8 +156,4 @@ li
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.ingredient, .logo{
-  cursor: pointer;
 }
