@@ -38,6 +38,17 @@ $(".toggleNav").click(function () {
   }
 });
 
+$(".closeNav").click(function () {
+  let navWidth = $(".side-nav-menu").outerWidth();
+  let navHeadWidth = $(".nav-header").outerWidth();
+  if ($(".side-nav-menu").css("left") == "0px") {
+    $(".side-nav-menu").animate({ left: `-${navWidth - navHeadWidth}` }, 1000);
+    $(".navbtn").removeClass("fa-x");
+    $(".navbtn").addClass("fa-list");
+    $(".links-list").hide(1000);
+  } 
+});
+
 // get Api
 getApi();
 async function getApi(s) {
